@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería Don Sabor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #ff4d4d, #ff9900);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ff4d4d;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #ff4d4d;
+        }
+        .price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+        .promo {
+            background: #fff5e6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .promo strong {
+            color: #e67e22;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍕 DisWeb para tu Comercio </h1>
+        <p>¡Las mejores estrategia y para tu negocio!</p>
+    </header>
+
+    <main>
+        <h2 class="section-title">Lista de Precios</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Pizza Grande (Mozzarella)</h3>
+                <p class="price">$3.000</p>
+            </div>
+            <div class="card">
+                <h3>Pizza Chica (Mozzarella)</h3>
+                <p class="price">$2.000</p>
+            </div>
+            <div class="card">
+                <h3>Pizza Grande (Especial)</h3>
+                <p class="price">$3.500</p>
+            </div>
+            <div class="card">
+                <h3>Pizza Chica (Especial)</h3>
+                <p class="price">$2.500</p>
+            </div>
+            <div class="card">
+                <h3>Empanadas (unidad)</h3>
+                <p class="price">$500</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:2rem;">Promociones</h2>
+        <div class="promo">
+            <strong>Promo 1:</strong> Pizza grande muzzarella + Gaseosa 1.5L — <strong>$3.500</strong>
+        </div>
+        <div class="promo">
+            <strong>Promo 2:</strong> 2 Pizzas grandes muzzarella + Gaseosa 2.25L — <strong>$6.500</strong>
+        </div>
+        <div class="promo">
+            <strong>Promo 3:</strong> 12 Empanadas surtidas + Gaseosa 1.5L — <strong>$5.500</strong>
+        </div>
+        <div class="promo">
+            <strong>Promo 4:</strong> Pizza especial grande + 6 Empanadas + Gaseosa 2.25L — <strong>$6.000</strong>
+        </div>
+    </main>
+
+    <footer>
+        📍 Dirección: Av. Siempre Viva 123 — Tel: (123) 456-789  
+        <br>Horario: Lunes a Domingo, 19:00 - 00:00
+    </footer>
+</body>
+</html>
