@@ -897,14 +897,10 @@ Creamos sitios web que se adaptan a cualquier pantalla: desde teléfonos hasta t
           </div>
         </div>
 
-       <form action="https://formsubmit.co/entreriosmares@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
-  <div class="row gy-4">
-	   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://diswebsolucionesdigitales.github.io/disweb/">
+       <form id="contactForm" action="https://formsubmit.co/entreriosmares@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
+  <input type="hidden" name="_captcha" value="false">
   
   <div class="row gy-4">
-
     <div class="col-md-6">
       <input type="text" name="name" class="form-control" placeholder="Su Nombre" required>
     </div>
@@ -922,12 +918,30 @@ Creamos sitios web que se adaptan a cualquier pantalla: desde teléfonos hasta t
     </div>
 
     <div class="col-md-12 text-center">
-      <div class="sent-message" style="display: none;">Su mensaje ha sido enviado. Gracias!</div>
+      <div id="sent-message" class="sent-message" style="display: none;">Su mensaje ha sido enviado. Gracias!</div>
       <button type="submit">Enviar Mensaje</button>
     </div>
-
   </div>
-</form><!-- End Contact Form -->
+</form>
+
+<script>
+const form = document.getElementById("contactForm");
+const thanksMsg = document.getElementById("sent-message");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault(); // detiene el envío normal
+
+  // Enviar con fetch a formsubmit
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form)
+  }).then(() => {
+    // Mostrar mensaje de Gracias
+    thanksMsg.style.display = "block";
+    form.reset();
+  });
+});
+</script>
 
       </div>
 
