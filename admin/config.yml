@@ -1,25 +1,26 @@
 backend:
   name: git-gateway
-  repo: diswebsolucionesdigitales/disweb
-  branch: main
-
-# Agregá esta línea para deshabilitar Netlify Identity:
-local_backend: true
-
-media_folder: "assets/img"
-public_folder: "/assets/img"
+  branch: main  # o master, según tu repo
+media_folder: "assets/img/uploads" # donde se guardan las imágenes
+public_folder: "/assets/img/uploads"
 
 collections:
-  - name: "settings"
-    label: "Configuración del Sitio"
+  - name: "sitio"
+    label: "Sitio Web"
     files:
-      - name: "site_settings"
-        label: "Ajustes Generales"
-        file: "_data/settings.json"
+      - file: "index.html"
+        label: "Página principal"
+        name: "index"
         fields:
-          - { label: "Título del Header", name: "titulo_header", widget: "string" }
-          - { label: "Título Principal (Hero)", name: "titulo_hero", widget: "string" }
-          - { label: "Teléfono", name: "telefono", widget: "string" }
+          - { label: "Título Header", name: "titulo_header", widget: "string" }
+          - { label: "Título Hero", name: "titulo_hero", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
+          - { label: "Teléfono", name: "telefono", widget: "string" }
+          - { label: "Texto Nosotros", name: "nosotros", widget: "text" }
+          - { label: "Precio Plan Básico", name: "precio_basico", widget: "string" }
+          - { label: "Precio Plan Avanzado", name: "precio_avanzado", widget: "string" }
+          - { label: "Imagen Principal", name: "hero_img", widget: "image" }
+
+
 
 
