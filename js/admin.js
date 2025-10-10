@@ -1,30 +1,50 @@
+// ==================== SEGURIDAD ====================
+const CLAVE_ADMIN = "DisWeb2024!"; // CAMBIÁ ESTA CONTRASEÑA
+
+function protegerPanel() {
+    const claveIngresada = prompt("🔐 Clave de administrador:");
+    if (claveIngresada !== CLAVE_ADMIN) {
+        document.body.innerHTML = `
+            <div style="text-align: center; padding: 100px; font-family: Arial;">
+                <h1 style="color: #dc3545;">⛔ Acceso no autorizado</h1>
+                <p>No tenés permisos para acceder al panel de control.</p>
+                <a href="index.html" style="color: #007bff;">Volver al sitio principal</a>
+            </div>
+        `;
+        return false;
+    }
+    return true;
+}
+
+// Verificar contraseña inmediatamente
+if (!protegerPanel()) {
+    throw new Error("Acceso denegado");
+}
+// ==================== FIN SEGURIDAD ====================
+
 // Cargar datos actuales en el panel
 async function cargarDatosActuales() {
     try {
-        console.log('🔍 Panel: Intentando cargar config.json...');
+        console.log('🔍 Cargando configuración...');
         const response = await fetch('./data/config.json');
         
-        if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
-        }
+        if (!response.ok) throw new Error('Error cargando config.json');
         
         const config = await response.json();
-        console.log('✅ Panel: Datos cargados:', config);
+        console.log('✅ Configuración cargada:', config);
         
-        // Llenar formulario con datos actuales
+        // Llenar formulario
         document.getElementById('titulo_header').value = config.titulo_header || 'Soluciones Digitales';
         document.getElementById('titulo_hero').value = config.titulo_hero || 'DisWeb Soluciones Digitales';
         document.getElementById('telefono').value = config.telefono || '+54 9 11 5340-2972';
+        document.getElementById('email').value = config.email || 'disweb.solucionesdigitales@gmail.com';
         
     } catch (error) {
-        console.log('❌ Panel: Error cargando datos:', error);
-        // Usamos valores por defecto
+        console.log('⚠️ Usando valores por defecto');
         document.getElementById('titulo_header').value = 'Soluciones Digitales';
         document.getElementById('titulo_hero').value = 'DisWeb Soluciones Digitales';
         document.getElementById('telefono').value = '+54 9 11 5340-2972';
-        
-        // Mensaje solo en consola, no alert
-        console.log('⚠️ Usando valores por defecto');
+        document.getElementById('email').value = 'disweb.solucionesdigitales@gmail.com';
     }
 }
 
@@ -32,26 +52,22 @@ async function cargarDatosActuales() {
 document.getElementById('editor-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Recopilar datos del formulario
     const nuevosDatos = {
         titulo_header: document.getElementById('titulo_header').value,
         titulo_hero: document.getElementById('titulo_hero').value,
-        telefono: document.getElementById('telefono').value
+        telefono: document.getElementById('telefono').value,
+        email: document.getElementById('email').value
     };
     
-    console.log('💾 Guardando datos:', nuevosDatos);
+    console.log('💾 Guardando:', nuevosDatos);
     
-    // Mostrar confirmación visual
-    const mensaje = `✅ Cambios guardados localmente:\n\n• Título Header: ${nuevosDatos.titulo_header}\n• Título Hero: ${nuevosDatos.titulo_hero}\n• Teléfono: ${nuevosDatos.telefono}\n\nPara ver los cambios en la página principal:\n1. Recargá index.html\n2. O hacé clic en "Abrir Página Principal"`;
-    
-    // Guardar en localStorage para persistencia
+    // En GitHub Pages no podemos guardar realmente en JSON
+    // Pero mostramos qué se guardaría
     localStorage.setItem('configDisWeb', JSON.stringify(nuevosDatos));
-    localStorage.setItem('ultimaModificacion', new Date().toLocaleString());
     
-    // Mostrar mensaje de éxito
-    alert(mensaje);
+    alert(`✅ Cambios preparados para guardar:\n\n• Título Header: ${nuevosDatos.titulo_header}\n• Título Hero: ${nuevosDatos.titulo_hero}\n• Teléfono: ${nuevosDatos.telefono}\n• Email: ${nuevosDatos.email}\n\n⚠️ En GitHub Pages necesitamos editar manualmente data/config.json`);
     
-    // Actualizar el botón para feedback visual
+    // Feedback visual
     const boton = document.querySelector('button[type="submit"]');
     const textoOriginal = boton.textContent;
     boton.textContent = '✅ Guardado!';
@@ -63,46 +79,8 @@ document.getElementById('editor-form').addEventListener('submit', function(e) {
     }, 2000);
 });
 
-// Agregar botón para abrir página principal
+// Inicializar panel cuando cargue la página
 document.addEventListener('DOMContentLoaded', function() {
-    // Crear botón adicional
-    const botonAbrirPrincipal = document.createElement('button');
-    botonAbrirPrincipal.textContent = '🌐 Abrir Página Principal';
-    botonAbrirPrincipal.type = 'button';
-    botonAbrirPrincipal.style.background = '#6c757d';
-    botonAbrirPrincipal.style.marginTop = '10px';
-    botonAbrirPrincipal.onclick = function() {
-        window.open('index.html', '_blank');
-    };
-    
-    // Agregar después del formulario
-    document.getElementById('editor-form').appendChild(botonAbrirPrincipal);
-    
-    // Cargar datos
+    console.log('🛠️ Panel de control iniciado');
     cargarDatosActuales();
-    
-    // Mostrar última modificación si existe
-    const ultimaMod = localStorage.getItem('ultimaModificacion');
-    if (ultimaMod) {
-        console.log('📅 Última modificación:', ultimaMod);
-    }
-});
-
-// Función para cargar datos desde localStorage (para pruebas)
-function cargarDesdeLocalStorage() {
-    const datosGuardados = localStorage.getItem('configDisWeb');
-    if (datosGuardados) {
-        const datos = JSON.parse(datosGuardados);
-        console.log('📂 Datos en localStorage:', datos);
-        return datos;
-    }
-    return null;
-}
-
-// También cargar desde localStorage al iniciar
-window.addEventListener('load', function() {
-    const datosLocal = cargarDesdeLocalStorage();
-    if (datosLocal) {
-        console.log('🔄 Cargando datos desde localStorage...');
-    }
 });
