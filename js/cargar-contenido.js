@@ -1,15 +1,13 @@
 // Cargar contenido dinámico desde config.json
 async function cargarContenidoDinamico() {
     try {
-        console.log('🔍 Intentando cargar config.json...');
+        console.log('🔍 Cargando configuración...');
         const response = await fetch('./data/config.json');
         
-        if (!response.ok) {
-            throw new Error('No se pudo cargar config.json');
-        }
+        if (!response.ok) throw new Error('Error cargando config.json');
         
         const config = await response.json();
-        console.log('✅ Datos cargados:', config);
+        console.log('✅ Configuración cargada:', config);
         
         // Actualizar elementos de la página
         if (document.getElementById('titulo-header-dinamico')) {
@@ -24,16 +22,17 @@ async function cargarContenidoDinamico() {
             document.getElementById('telefono-dinamico').textContent = config.telefono;
         }
         
-        if (document.getElementById('telefono-footer-dinamico')) {
-            document.getElementById('telefono-footer-dinamico').textContent = config.telefono;
+        if (document.getElementById('email-dinamico')) {
+            document.getElementById('email-dinamico').textContent = config.email;
         }
         
-        console.log('🎉 Contenido dinámico cargado correctamente');
+        console.log('🎉 Contenido dinámico actualizado');
         
     } catch (error) {
-        console.log('❌ Error cargando contenido:', error);
+        console.log('❌ Error:', error);
     }
 }
 
 // Ejecutar cuando la página cargue
-document.addEventListener('DOMContentLoaded', cargarContenidoDinamico); 
+document.addEventListener('DOMContentLoaded', cargarContenidoDinamico);
+
