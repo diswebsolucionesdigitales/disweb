@@ -1,12 +1,10 @@
 backend:
-  name: github
+  name: git-gateway
   repo: diswebsolucionesdigitales/disweb
   branch: main
 
-# Quitá estas líneas:
-# site_domain: diswebsolucionesdigitales.github.io  
-# base_url: https://diswebsolucionesdigitales.github.io
-# publish_mode: editorial_workflow
+# Agregá esta línea para deshabilitar Netlify Identity:
+local_backend: true
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
@@ -23,4 +21,5 @@ collections:
           - { label: "Título Principal (Hero)", name: "titulo_hero", widget: "string" }
           - { label: "Teléfono", name: "telefono", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
+
 
