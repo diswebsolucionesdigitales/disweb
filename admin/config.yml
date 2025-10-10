@@ -2,12 +2,14 @@ backend:
   name: github
   repo: diswebsolucionesdigitales/disweb
   branch: main
-  site_domain: diswebsolucionesdigitales.github.io
-  base_url: https://diswebsolucionesdigitales.github.io
 
-publish_mode: editorial_workflow
-media_folder: "assets/img/uploads"
-public_folder: "/assets/img/uploads"
+# Quitá estas líneas:
+# site_domain: diswebsolucionesdigitales.github.io  
+# base_url: https://diswebsolucionesdigitales.github.io
+# publish_mode: editorial_workflow
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
 
 collections:
   - name: "settings"
@@ -20,7 +22,5 @@ collections:
           - { label: "Título del Header", name: "titulo_header", widget: "string" }
           - { label: "Título Principal (Hero)", name: "titulo_hero", widget: "string" }
           - { label: "Teléfono", name: "telefono", widget: "string" }
-
           - { label: "Email", name: "email", widget: "string" }
 
-          
