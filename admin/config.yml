@@ -18,11 +18,12 @@ collections:
         label: "Ajustes Generales"
         file: "_data/settings.json"
         fields:
-          - { label: "Título del Header", name: "titulo_header", widget: "string" }
-          - { label: "Título Principal (Hero)", name: "titulo_hero", widget: "string" }
-          - { label: "Teléfono", name: "telefono", widget: "string" }
+          - { label: "Titulo del Header", name: "titulo_header", widget: "string" }
+          - { label: "Titulo Principal (Hero)", name: "titulo_hero", widget: "string" }
+          - { label: "Telefono", name: "telefono", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Texto Nosotros", name: "nosotros", widget: "text" }
-          - { label: "Precio Plan Básico", name: "precio_basico", widget: "string" }
+          - { label: "Precio Plan Basico", name: "precio_basico", widget: "string" }
           - { label: "Precio Plan Avanzado", name: "precio_avanzado", widget: "string" }
           - { label: "Imagen Hero", name: "hero_img", widget: "image" }
+
