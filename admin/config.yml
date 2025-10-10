@@ -1,7 +1,8 @@
 backend:
   name: git-gateway
-  branch: main  # o master, según tu repo
-media_folder: "assets/img/uploads" # donde se guardan las imágenes
+  branch: main
+
+media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
 
 collections:
@@ -12,14 +13,10 @@ collections:
         label: "Página principal"
         name: "index"
         fields:
-          - { label: "Título Header", name: "titulo_header", widget: "string" }
-          - { label: "Título Hero", name: "titulo_hero", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Teléfono", name: "telefono", widget: "string" }
-          - { label: "Texto Nosotros", name: "nosotros", widget: "text" }
-          - { label: "Precio Plan Básico", name: "precio_basico", widget: "string" }
-          - { label: "Precio Plan Avanzado", name: "precio_avanzado", widget: "string" }
-          - { label: "Imagen Principal", name: "hero_img", widget: "image" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Texto principal", name: "texto", widget: "text" }
+          - { label: "Imagen principal", name: "imagen", widget: "image" }
+          - { label: "Precio", name: "precio", widget: "string" }
 
 
 
