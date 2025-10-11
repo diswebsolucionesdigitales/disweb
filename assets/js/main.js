@@ -1,5 +1,3 @@
-if (window.location.pathname.includes("/admin")) return;
-
 /**
 * Template Name: DevFolio
 * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
