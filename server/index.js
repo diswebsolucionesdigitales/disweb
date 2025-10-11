@@ -43,3 +43,13 @@ const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+const API_BASE = 'https://disweb-backend.onrender.com';
+
+async function enviarFormulario(data) {
+  const response = await fetch(`${API_BASE}/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return response.json();
+}
