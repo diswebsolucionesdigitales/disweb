@@ -1,5 +1,5 @@
 {
-  "name": "disweb-trastienda",
+  "name": "disweb-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,4 +14,3 @@
     "body-parser": "^1.20.2"
   }
 }
-
