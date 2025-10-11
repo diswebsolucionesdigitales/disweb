@@ -247,7 +247,10 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
-  /**
+  
+
+})();
+/**
    * Aca puse abajo lo de server para render
    */
 const API_BASE = 'https://disweb-backend.onrender.com';
@@ -260,5 +263,3 @@ async function enviarFormulario(data) {
   });
   return response.json();
 }
-
-})();
