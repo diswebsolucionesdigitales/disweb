@@ -2,11 +2,30 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Ruta de prueba
+// Datos de ejemplo (luego conectaremos con GitHub)
+let config = {
+  titulo_header: "DW soluciones digitales",
+  titulo_hero: "DisWeb Soluciones Digitales",
+  telefono: "+54 9 11 5340-2972",
+  email: "diswebsolucionesdigitales@proton.me"
+};
+
+// Obtener configuración actual
+app.get('/api/config', (req, res) => {
+  res.json(config);
+});
+
+// Actualizar configuración
+app.post('/api/update-settings', (req, res) => {
+  config = { ...config, ...req.body };
+  console.log('📝 Configuración actualizada:', config);
+  res.json({ success: true, message: 'Configuración actualizada' });
+});
+
+// Endpoints existentes
 app.get('/api/test', (req, res) => {
   res.json({ 
     message: '✅ Backend DisWeb funcionando!', 
@@ -15,15 +34,11 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-// Health check para Render
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', service: 'disweb-backend' });
+  res.json({ status: 'healthy' });
 });
 
-// El puerto lo asigna Render automáticamente
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor DisWeb corriendo en puerto ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/health`);
-  console.log(`📍 Test endpoint: http://localhost:${PORT}/api/test`);
 });
