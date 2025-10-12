@@ -16,6 +16,18 @@
 
   gtag('config', 'G-YSBPMTKYHM');
 </script>
+<!-- desde aca prueba render-->
+	<script>
+async function cargarDatos() {
+  const res = await fetch("https://disweb-backend.onrender.com/api/data");
+  const data = await res.json();
+
+  document.getElementById("titulo").innerText = data.titulo;
+  document.getElementById("descripcion").innerText = data.descripcion;
+  document.getElementById("imagen").src = "https://disweb-backend.onrender.com" + data.imagen;
+}
+cargarDatos();
+</script><!-- hasta aca prueba render -->
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/faviconiconapple.png" rel="apple-touch-icon">
