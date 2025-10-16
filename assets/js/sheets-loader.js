@@ -2,6 +2,7 @@
 
 class SheetsLoader {
     constructor() {
+        // URL de tu Google Sheets - LA ACTUALIZAREMOS DESPUÉS
         this.sheetsUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU_GOOGLE_SHEETS_ID/pub?output=csv";
     }
 
@@ -28,7 +29,7 @@ class SheetsLoader {
                 obj[header] = values[index] || '';
             });
             return obj;
-        }).filter(item => item[headers[0]]); // Filtrar filas vacías
+        }).filter(item => item[headers[0]]);
     }
 
     // Cargar servicios
@@ -36,12 +37,15 @@ class SheetsLoader {
         const services = await this.loadSheet('Servicios');
         const container = document.getElementById('services-container');
         
-        if (!container) return;
+        if (!container || services.length === 0) {
+            console.log('No se pudieron cargar los servicios desde Sheets');
+            return;
+        }
 
         container.innerHTML = services
             .filter(service => service.Activo === 'Sí')
-            .map(service => `
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            .map((service, index) => `
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi ${service.Icono}"></i>
@@ -58,14 +62,17 @@ class SheetsLoader {
         const testimonials = await this.loadSheet('Testimonios');
         const container = document.querySelector('.swiper-wrapper');
         
-        if (!container) return;
+        if (!container || testimonials.length === 0) {
+            console.log('No se pudieron cargar los testimonios desde Sheets');
+            return;
+        }
 
         container.innerHTML = testimonials
             .filter(testimonial => testimonial.Activo === 'Sí')
             .map(testimonial => `
                 <div class="swiper-slide">
                     <div class="testimonial-item">
-                        <img src="assets/img/testimonials/${testimonial.Imagen}" class="testimonial-img" alt="">
+                        <img src="assets/img/testimonials/${testimonial.Imagen}" class="testimonial-img" alt="${testimonial.Nombre}">
                         <h3>${testimonial.Nombre}</h3>
                         <h4>${testimonial.Cargo}</h4>
                         <div class="stars">
@@ -82,7 +89,7 @@ class SheetsLoader {
                 </div>
             `).join('');
 
-        // Reiniciar Swiper
+        // Reiniciar Swiper si existe
         if (typeof Swiper !== 'undefined') {
             new Swiper('.init-swiper', {
                 loop: true,
