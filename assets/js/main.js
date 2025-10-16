@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (scrollTop > lastScrollTop) {
             // Scrolling down - ocultar botón
-            whatsappBtn.style.transform = 'translateY(100px)';
+            whatsappBtn.style.transform = 'translateY(150px)';
         } else {
             // Scrolling up - mostrar botón
             whatsappBtn.style.transform = 'translateY(0)';
