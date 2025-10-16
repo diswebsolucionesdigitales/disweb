@@ -2,8 +2,7 @@
 
 class SheetsLoader {
     constructor() {
-        // URL de tu Google Sheets - LA ACTUALIZAREMOS DESPUÉS
-        this.sheetsUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?output=csv";
+        this.sheetsUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=0&output=csv";
     }
 
     async loadSheet(sheetName) {
@@ -59,26 +58,19 @@ class SheetsLoader {
 
     // Cargar testimonios
     async loadTestimonials() {
- console.log('=== INICIANDO CARGA DE TESTIMONIOS ===');
-    
-    const testimonials = await this.loadSheet('Testimonios');
-    console.log('Testimonios crudos:', testimonials);
-    
-    const container = document.querySelector('.swiper-wrapper');
-    console.log('Contenedor encontrado:', container);
-
-
-
+        console.log('=== CARGANDO TESTIMONIOS ===');
+        const testimonialsData = await this.loadSheet('Testimonios');
+        console.log('Datos de testimonios:', testimonialsData);
         
-        const testimonials = await this.loadSheet('Testimonios');
         const container = document.querySelector('.swiper-wrapper');
+        console.log('Contenedor:', container);
         
-        if (!container || testimonials.length === 0) {
-            console.log('No se pudieron cargar los testimonios desde Sheets');
+        if (!container || testimonialsData.length === 0) {
+            console.log('No se encontraron testimonios');
             return;
         }
 
-        container.innerHTML = testimonials
+        container.innerHTML = testimonialsData
             .filter(testimonial => testimonial.Activo === 'Sí')
             .map(testimonial => `
                 <div class="swiper-slide">
