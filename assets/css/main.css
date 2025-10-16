@@ -35,6 +35,56 @@
   --nav-dropdown-hover-color: #0078ff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
+
+
+/* Estilos del botón de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.whatsapp-float.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    margin-top: 2px;
+}
+
+/* Para móviles */
+@media screen and (max-width: 767px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+}
+
 /* Template Custom Colors */
 :root {
   --alt-background-color: #076cdd;
