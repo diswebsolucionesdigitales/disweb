@@ -59,6 +59,17 @@ class SheetsLoader {
 
     // Cargar testimonios
     async loadTestimonials() {
+ console.log('=== INICIANDO CARGA DE TESTIMONIOS ===');
+    
+    const testimonials = await this.loadSheet('Testimonios');
+    console.log('Testimonios crudos:', testimonials);
+    
+    const container = document.querySelector('.swiper-wrapper');
+    console.log('Contenedor encontrado:', container);
+
+
+
+        
         const testimonials = await this.loadSheet('Testimonios');
         const container = document.querySelector('.swiper-wrapper');
         
