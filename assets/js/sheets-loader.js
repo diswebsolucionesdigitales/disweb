@@ -3,7 +3,7 @@
 class SheetsLoader {
     constructor() {
         // URL de tu Google Sheets - LA ACTUALIZAREMOS DESPUÉS
-        this.sheetsUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=0&single=true&output=csv";
+        this.sheetsUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?output=csv";
     }
 
     async loadSheet(sheetName) {
