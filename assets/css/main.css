@@ -1675,20 +1675,21 @@ css
     visibility: hidden !important;
     opacity: 0 !important;
 }
-/* Agregar en assets/css/main.css */
+/* ======= ANIMACIÓN PERSONAJE ALEATORIO ======= */
 .personaje-aleatorio {
     position: fixed;
     z-index: 9999;
     pointer-events: none;
     transition: all 0.8s ease-in-out;
     opacity: 0;
+    bottom: 20%;
 }
 
 .personaje-visible {
     opacity: 1;
 }
 
-/* Posiciones posibles */
+/* Posiciones laterales - ENTRADA */
 .personaje-izquierda {
     left: -100px;
     bottom: 20%;
@@ -1701,6 +1702,7 @@ css
     transform: translateX(0);
 }
 
+/* Posiciones laterales - VISIBLE */
 .personaje-visible.personaje-izquierda {
     left: 20px;
     transform: translateX(0);
@@ -1720,4 +1722,12 @@ css
 
 .personaje-saludando {
     animation: saludar 0.5s ease-in-out 2;
+}
+
+/* Estilo del emoji */
+.personaje-aleatorio span {
+    font-size: 3rem;
+    display: block;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
 }
