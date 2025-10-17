@@ -70,7 +70,7 @@
 
   /**
    * Scroll top button
-   */
+   *//*
   let scrollTop = document.querySelector('.scroll-top');
 
   function toggleScrollTop() {
