@@ -261,6 +261,7 @@
         console.log('🎭 PersonajeAnimado INICIADO - Esperando 3 segundos...');
         setTimeout(() => {
             this.activado = true;
+          this.mostrarPersonaje();
             this.programarSiguiente();
         }, 3000);
     }
@@ -268,7 +269,7 @@
     programarSiguiente() {
         if (!this.activado) return;
 
-        const tiempo = Math.random() * 20000 + 20000;
+        const tiempo = Math.random() * 10000 + 10000;
         console.log('🎭 Programando próximo personaje en:', Math.round(tiempo/1000), 'segundos');
         
         this.intervalo = setTimeout(() => {
