@@ -1,11 +1,9 @@
-// assets/js/sheets-loader.js
-
 class SheetsLoader {
     constructor() {
-        // URLs específicas para cada hoja
         this.sheetsUrls = {
             servicios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=0&single=true&output=csv",
-            testimonios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=1947413653&single=true&output=csv"
+            testimonios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=1947413653&single=true&output=csv",
+            nosotros: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFNwk8_zmJ56A01HGER3JCFNbO2woS6uc7rg-YqaN7n3gmKNaC3KC6wNhAJM27WSoHlvf_2i1eepAw/pub?gid=557281232&single=true&output=csv"
         };
     }
 
@@ -36,7 +34,6 @@ class SheetsLoader {
         const headers = lines[0].split(',').map(h => h.trim());
         
         return lines.slice(1).map(line => {
-            // Manejo mejorado de comas dentro de campos
             const values = [];
             let current = '';
             let inQuotes = false;
@@ -56,7 +53,6 @@ class SheetsLoader {
             const obj = {};
             headers.forEach((header, index) => {
                 obj[header] = values[index] || '';
-                // Limpiar comillas si existen
                 if (obj[header].startsWith('"') && obj[header].endsWith('"')) {
                     obj[header] = obj[header].slice(1, -1);
                 }
@@ -65,7 +61,7 @@ class SheetsLoader {
         }).filter(item => item[headers[0]] && item[headers[0]] !== '');
     }
 
-    // Cargar servicios
+    // Método existente para Servicios
     async loadServices() {
         console.log('=== CARGANDO SERVICIOS ===');
         const services = await this.loadSheet('servicios');
@@ -76,27 +72,25 @@ class SheetsLoader {
         
         if (!container || services.length === 0) {
             console.log('No se pudieron cargar los servicios desde Sheets');
-            // Mostrar servicios de respaldo
-            this.showFallbackServices(container);
             return;
         }
 
         container.innerHTML = services
-            .filter(service => service.Activo && service.Activo.toLowerCase() === 'sí')
+            .filter(service => service.Activo === 'Sí')
             .map((service, index) => `
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
                     <div class="service-item position-relative">
                         <div class="icon">
-                            <i class="bi ${service.Icono || 'bi-activity'}"></i>
+                            <i class="bi ${service.Icono}"></i>
                         </div>
-                        <h3>${service.Nombre || 'Servicio'}</h3>
-                        <p>${service.Descripción || 'Descripción del servicio'}</p>
+                        <h3>${service.Nombre}</h3>
+                        <p>${service.Descripción}</p>
                     </div>
                 </div>
             `).join('');
     }
 
-    // Cargar testimonios
+    // Método existente para Testimonios
     async loadTestimonials() {
         console.log('=== CARGANDO TESTIMONIOS ===');
         const testimonialsData = await this.loadSheet('testimonios');
@@ -107,111 +101,113 @@ class SheetsLoader {
         
         if (!container || testimonialsData.length === 0) {
             console.log('No se encontraron testimonios');
-            // Mostrar testimonios de respaldo
-            this.showFallbackTestimonials(container);
             return;
         }
 
         container.innerHTML = testimonialsData
-            .filter(testimonial => testimonial.Activo && testimonial.Activo.toLowerCase() === 'sí')
+            .filter(testimonial => testimonial.Activo === 'Sí')
             .map(testimonial => `
                 <div class="swiper-slide">
                     <div class="testimonial-item">
-                        ${testimonial.Imagen ? `<img src="assets/img/testimonials/${testimonial.Imagen}" class="testimonial-img" alt="${testimonial.Nombre || 'Cliente'}">` : ''}
-                        <h3>${testimonial.Nombre || 'Cliente'}</h3>
-                        <h4>${testimonial.Cargo || 'Cliente satisfecho'}</h4>
+                        <img src="assets/img/testimonials/${testimonial.Imagen}" class="testimonial-img" alt="${testimonial.Nombre}">
+                        <h3>${testimonial.Nombre}</h3>
+                        <h4>${testimonial.Cargo}</h4>
                         <div class="stars">
                             ${'<i class="bi bi-star-fill"></i>'.repeat(parseInt(testimonial.Estrellas) || 5)}
                         </div>
                         <p>
                             <i class="bi bi-quote quote-icon-left"></i>
-                            ${testimonial.Texto || 'Excelente servicio y profesionalismo.'}
+                            ${testimonial.Texto}
                             <i class="bi bi-quote quote-icon-right"></i>
                         </p>
                     </div>
                 </div>
             `).join('');
 
-        // Reiniciar Swiper
         this.initializeSwiper();
+    }
+
+    // NUEVO MÉTODO para Nosotros
+    async loadAbout() {
+        console.log('=== CARGANDO NOSOTROS ===');
+        const aboutData = await this.loadSheet('nosotros');
+        console.log('Datos de Nosotros:', aboutData);
+        
+        if (!aboutData || aboutData.length === 0) {
+            console.log('No se encontraron datos de Nosotros');
+            return;
+        }
+
+        const activeItems = aboutData
+            .filter(item => item.Activo === 'Sí')
+            .sort((a, b) => a.Orden - b.Orden);
+
+        this.renderAboutContent(activeItems);
+        this.renderSkills(activeItems);
+    }
+
+    renderAboutContent(items) {
+        const container = document.querySelector('.about-me');
+        if (!container) return;
+
+        const paragraphs = items.filter(item => item.Tipo === 'parrafo');
+        
+        let aboutHTML = '<h4>Nosotros</h4>';
+        paragraphs.forEach(paragraph => {
+            aboutHTML += `<p style="text-align: justify;">${paragraph.Descripcion}</p>`;
+        });
+
+        container.innerHTML = aboutHTML;
+    }
+
+    renderSkills(items) {
+        const skillsContainer = document.querySelector('.skills-content');
+        if (!skillsContainer) return;
+
+        const tools = items.filter(item => item.Tipo === 'herramienta');
+        
+        let skillsHTML = '<h5>Herramientas</h5>';
+        
+        tools.forEach(tool => {
+            skillsHTML += `
+                <div class="progress">
+                    <span class="skill"><span>${tool.Nombre}</span> <i class="val">${tool.Valor}%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" 
+                             aria-valuenow="${tool.Valor}" aria-valuemin="0" aria-valuemax="100"
+                             style="width: ${tool.Valor}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+
+        skillsContainer.innerHTML = skillsHTML;
     }
 
     initializeSwiper() {
         if (typeof Swiper !== 'undefined') {
             setTimeout(() => {
-                const swiperContainer = document.querySelector('.testimonials-slider');
-                if (swiperContainer) {
-                    new Swiper('.testimonials-slider', {
-                        loop: true,
-                        speed: 600,
-                        autoplay: { delay: 5000 },
-                        slidesPerView: 'auto',
-                        pagination: {
-                            el: '.swiper-pagination',
-                            type: 'bullets',
-                            clickable: true
-                        }
-                    });
-                }
+                new Swiper('.testimonials-slider', {
+                    loop: true,
+                    speed: 600,
+                    autoplay: { delay: 5000 },
+                    slidesPerView: 'auto',
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets',
+                        clickable: true
+                    }
+                });
             }, 500);
         }
     }
-
-    // Métodos de respaldo en caso de error
-    showFallbackServices(container) {
-        if (!container) return;
-        
-        container.innerHTML = `
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-code-slash"></i>
-                    </div>
-                    <h3>Desarrollo Web</h3>
-                    <p>Creación de sitios web modernos y responsive.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-phone"></i>
-                    </div>
-                    <h3>Apps Móviles</h3>
-                    <p>Desarrollo de aplicaciones nativas e híbridas.</p>
-                </div>
-            </div>
-        `;
-    }
-
-    showFallbackTestimonials(container) {
-        if (!container) return;
-        
-        container.innerHTML = `
-            <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <h3>Cliente Satisfecho</h3>
-                    <h4>CEO de Empresa</h4>
-                    <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        Excelente servicio y profesionalismo. Los recomiendo.
-                        <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-            </div>
-        `;
-    }
 }
 
-// Inicializar
+// Inicialización actualizada
 document.addEventListener('DOMContentLoaded', function() {
     const loader = new SheetsLoader();
     
-    // Cargar con delays para evitar conflictos
-    setTimeout(() => loader.loadServices(), 500);
-    setTimeout(() => loader.loadTestimonials(), 1000);
+    setTimeout(() => loader.loadServices(), 100);
+    setTimeout(() => loader.loadTestimonials(), 200);
+    setTimeout(() => loader.loadAbout(), 300); // ← Nueva línea para Nosotros
 });
