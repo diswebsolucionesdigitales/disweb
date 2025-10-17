@@ -88,7 +88,7 @@
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
-
+*/
   /**
    * Animation on scroll function and init
    */
