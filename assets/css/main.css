@@ -1669,3 +1669,9 @@ css
 #hero img {
     display: none; /* Oculta la imagen img */
 }
+/* Ocultar la flecha del Scroll Top */
+#scroll-top {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
