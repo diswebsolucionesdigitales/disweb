@@ -281,3 +281,92 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Botón de WhatsApp clickeado');
     });
 });
+// Agregar en sheets-loader.js o en un script separado
+class PersonajeAnimado {
+    constructor() {
+        this.personajes = [
+            '👨‍💻', '👩‍💻', '🤖', '🐱', '🦊', '👾', '😊', '😎'
+        ];
+        this.intervalo = null;
+        this.activado = false;
+    }
+
+    iniciar() {
+        // Esperar 3 segundos antes de empezar
+        setTimeout(() => {
+            this.activado = true;
+            this.programarSiguiente();
+        }, 3000);
+    }
+
+    programarSiguiente() {
+        if (!this.activado) return;
+
+        // Tiempo aleatorio entre 20-40 segundos
+        const tiempo = Math.random() * 20000 + 20000;
+        
+        this.intervalo = setTimeout(() => {
+            this.mostrarPersonaje();
+            this.programarSiguiente();
+        }, tiempo);
+    }
+
+    mostrarPersonaje() {
+        // Crear elemento del personaje
+        const personaje = document.createElement('div');
+        personaje.className = 'personaje-aleatorio';
+        
+        // Elegir personaje aleatorio
+        const emoji = this.personajes[Math.floor(Math.random() * this.personajes.length)];
+        personaje.innerHTML = `<span style="font-size: 3rem;">${emoji}</span>`;
+        
+        // Elegir lado aleatorio
+        const lado = Math.random() > 0.5 ? 'izquierda' : 'derecha';
+        personaje.classList.add(`personaje-${lado}`);
+        
+        // Agregar al body
+        document.body.appendChild(personaje);
+        
+        // Animación de entrada
+        setTimeout(() => {
+            personaje.classList.add('personaje-visible');
+            
+            // Animación de saludo después de 0.5s
+            setTimeout(() => {
+                personaje.classList.add('personaje-saludando');
+                
+                // Desaparecer después de 2s
+                setTimeout(() => {
+                    personaje.classList.remove('personaje-visible');
+                    
+                    // Eliminar del DOM después de la animación
+                    setTimeout(() => {
+                        if (personaje.parentNode) {
+                            personaje.parentNode.removeChild(personaje);
+                        }
+                    }, 1000);
+                    
+                }, 2000);
+            }, 500);
+            
+        }, 100);
+    }
+
+    detener() {
+        this.activado = false;
+        if (this.intervalo) {
+            clearTimeout(this.intervalo);
+        }
+    }
+}
+
+// Inicializar cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+    const personajeAnimado = new PersonajeAnimado();
+    personajeAnimado.iniciar();
+    
+    // Opcional: Detener cuando el usuario abandone la página
+    window.addEventListener('beforeunload', () => {
+        personajeAnimado.detener();
+    });
+});
