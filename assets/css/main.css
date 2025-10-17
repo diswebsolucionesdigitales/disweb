@@ -1675,3 +1675,49 @@ css
     visibility: hidden !important;
     opacity: 0 !important;
 }
+/* Agregar en assets/css/main.css */
+.personaje-aleatorio {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+}
+
+.personaje-visible {
+    opacity: 1;
+}
+
+/* Posiciones posibles */
+.personaje-izquierda {
+    left: -100px;
+    bottom: 20%;
+    transform: translateX(0);
+}
+
+.personaje-derecha {
+    right: -100px;
+    bottom: 20%;
+    transform: translateX(0);
+}
+
+.personaje-visible.personaje-izquierda {
+    left: 20px;
+    transform: translateX(0);
+}
+
+.personaje-visible.personaje-derecha {
+    right: 20px;
+    transform: translateX(0);
+}
+
+/* Animación de saludo */
+@keyframes saludar {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.personaje-saludando {
+    animation: saludar 0.5s ease-in-out 2;
+}
