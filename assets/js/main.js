@@ -249,38 +249,6 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
   
-
-})();
-// WhatsApp floating button functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    
-    // Mostrar botón con animación después de cargar la página
-    setTimeout(() => {
-        whatsappBtn.classList.add('visible');
-    }, 1000);
-    
-    // Opcional: Ocultar/mostrar botón al hacer scroll
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down - ocultar botón
-            whatsappBtn.style.transform = 'translateY(100px)';
-        } else {
-            // Scrolling up - mostrar botón
-            whatsappBtn.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = scrollTop;
-    }, false);
-    
-    // Tracking de clics (opcional)
-    whatsappBtn.addEventListener('click', function() {
-        // Aquí puedes agregar Google Analytics o otro tracking
-        console.log('Botón de WhatsApp clickeado');
-    });
-});
 // Agregar en sheets-loader.js o en un script separado
 class PersonajeAnimado {
     constructor() {
@@ -368,5 +336,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Opcional: Detener cuando el usuario abandone la página
     window.addEventListener('beforeunload', () => {
         personajeAnimado.detener();
+    });
+});
+
+})();
+// WhatsApp floating button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    
+    // Mostrar botón con animación después de cargar la página
+    setTimeout(() => {
+        whatsappBtn.classList.add('visible');
+    }, 1000);
+    
+    // Opcional: Ocultar/mostrar botón al hacer scroll
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down - ocultar botón
+            whatsappBtn.style.transform = 'translateY(100px)';
+        } else {
+            // Scrolling up - mostrar botón
+            whatsappBtn.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop;
+    }, false);
+    
+    // Tracking de clics (opcional)
+    whatsappBtn.addEventListener('click', function() {
+        // Aquí puedes agregar Google Analytics o otro tracking
+        console.log('Botón de WhatsApp clickeado');
     });
 });
