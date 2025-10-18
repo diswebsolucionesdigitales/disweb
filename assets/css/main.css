@@ -585,6 +585,24 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
+
+/*--------------------------------------------------------------
+# sitename "tus ideas a la web"
+--------------------------------------------------------------*/
+.sitename {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #2c1810, #8b5a2b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
