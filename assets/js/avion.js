@@ -14,7 +14,7 @@ function animarTitulo() {
     
     // Esperar hasta el segundo 10
     setTimeout(() => {
-        console.log('✍️ Segundo 10 - Iniciando escritura título');
+        console.log('✍️ Segundo 7,5 - Iniciando escritura título');
         
         titulo.classList.add('titulo-escribiendo');
         
@@ -23,7 +23,7 @@ function animarTitulo() {
             titulo.style.borderRight = 'none';
         }, 3000);
         
-    }, 10000); // 10 segundos
+    }, 7500); // 10 segundos
 }
 
 // Iniciar cuando cargue la página
@@ -48,39 +48,39 @@ function iniciarAnimacionAvion() {
         avion.classList.add('avion-volando-ida');
         
         setTimeout(() => {
-            console.log('⏸️ Segundo 5 - Termina vuelo ida');
+            console.log('⏸️ Segundo 3 - Termina vuelo ida');
             avion.classList.remove('avion-volando-ida');
             
             setTimeout(() => {
-                console.log('🛬 Segundo 6 - Inicia vuelo vuelta');
+                console.log('🛬 Segundo 3,5 - Inicia vuelo vuelta');
                 avion.style.backgroundImage = "url('criatura/fotoavion2.png')";
                 avion.classList.add('avion-volando-vuelta');
                 
                 setTimeout(() => {
-                    console.log('🅿️ Segundo 11 - Termina vuelo vuelta');
+                    console.log('🅿️ Segundo 7 - Termina vuelo vuelta');
                     avion.classList.remove('avion-volando-vuelta');
                     avion.style.backgroundImage = "url('criatura/fotoavion3.png')";
                     avion.classList.add('avion-estacionado');
                     console.log('✅ Imagen 3 aplicada');
                     
-                }, 5000);
+                }, 2500);
                 
-            }, 1000);
+            }, 500);
             
-        }, 4000);
+        }, 3000);
         
     }, 1000);
 
     // Backup - Forzar imagen 3 en segundo 11
     setTimeout(() => {
-        console.log('⚡ SEGUNDO 11 - FORZANDO IMAGEN 3');
+        console.log('⚡ SEGUNDO 7 - FORZANDO IMAGEN 3');
         avion.style.backgroundImage = "url('criatura/fotoavion3.png')";
         avion.classList.add('avion-estacionado');
         avion.style.opacity = '1';
         avion.style.top = '20px';
         avion.style.left = '320px';
         avion.style.transform = 'scale(0.8) rotate(-15deg)';
-    }, 11000);
+    }, 7000);
 }
 
 // Iniciar cuando cargue la página
