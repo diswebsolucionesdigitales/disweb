@@ -7,7 +7,7 @@
     width: 0;
     animation: 
         escribir-texto 3s steps(25) 10s forwards,
-        cursor-parpadeo 0.7s step-end infinite;
+        cursor-parpadeo 0.7s step-end 10s 4;
 }
 
 @keyframes escribir-texto {
