@@ -1,4 +1,3 @@
-/* Animación del título - CLASES ÚNICAS */
 .titulo-maquina {
     display: inline-block;
     overflow: hidden;
@@ -7,7 +6,8 @@
     width: 0;
     animation: 
         escribir-texto 3s steps(25) 10s forwards,
-        cursor-parpadeo 0.7s step-end 10s 4;
+        cursor-parpadeo 0.7s step-end 10s 4,       /* ⏱️ Parpadea 4 veces durante la escritura */
+        ocultar-cursor 0.1s forwards 13s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
 
 @keyframes escribir-texto {
@@ -18,7 +18,10 @@
     50% { border-color: transparent; }
 }
 
-
+/* 🆕 NUEVA ANIMACIÓN: Oculta el cursor */
+@keyframes ocultar-cursor {
+    to { border-color: transparent; }  /* 🔄 Hace el cursor transparente permanentemente */
+}
 /* Avión de papel */
 #avion {
     position: fixed;
