@@ -44,8 +44,8 @@ function iniciarAnimacionAvion() {
         avion.style.backgroundImage = "url('criatura/fotoavion3.png')";
         avion.classList.add('avion-estacionado');
         avion.style.opacity = '1';
-        avion.style.top = '30px';
-        avion.style.left = '200px';
+        avion.style.top = '25px';
+        avion.style.left = '320px';
         avion.style.transform = 'scale(0.8) rotate(-15deg)';
     }, 11000);
 }
