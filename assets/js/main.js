@@ -356,5 +356,54 @@
           console.log('Botón de WhatsApp clickeado');
       });
   });
+// Animación del avión de papel
+function iniciarAnimacionAvion() {
+    console.log('⏰ Segundo 0 - Inicio página');
+    
+    setTimeout(() => {
+        console.log('🛫 Segundo 1 - Inicia vuelo ida');
+        avion.style.backgroundImage = "url('criatura/fotoavion1.png')";
+        avion.classList.add('avion-volando-ida');
+        
+        setTimeout(() => {
+            console.log('⏸️ Segundo 5 - Termina vuelo ida');
+            avion.classList.remove('avion-volando-ida');
+            
+            setTimeout(() => {
+                console.log('🛬 Segundo 6 - Inicia vuelo vuelta');
+                avion.style.backgroundImage = "url('criatura/fotoavion2.png')";
+                avion.classList.add('avion-volando-vuelta');
+                
+                setTimeout(() => {
+                    console.log('🅿️ Segundo 11 - Termina vuelo vuelta');
+                    avion.classList.remove('avion-volando-vuelta');
+                    avion.style.backgroundImage = "url('criatura/fotoavion3.png')";
+                    avion.classList.add('avion-estacionado');
+                    console.log('✅ Imagen 3 aplicada');
+                    
+                }, 5000);
+                
+            }, 1000);
+            
+        }, 4000);
+        
+    }, 1000);
 
+    // Backup - Forzar imagen 3 en segundo 11
+    setTimeout(() => {
+        console.log('⚡ SEGUNDO 11 - FORZANDO IMAGEN 3');
+        avion.style.backgroundImage = "url('criatura/fotoavion3.png')";
+        avion.classList.add('avion-estacionado');
+        avion.style.opacity = '1';
+        avion.style.top = '30px';
+        avion.style.left = '200px';
+        avion.style.transform = 'scale(0.8) rotate(-15deg)';
+    }, 11000);
+}
+
+// Iniciar todo cuando cargue la página
+window.addEventListener('load', function() {
+    iniciarAnimacionCriatura();
+    iniciarAnimacionAvion();
+});
 })();
