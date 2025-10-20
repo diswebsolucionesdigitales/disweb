@@ -1747,3 +1747,113 @@ section,
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
 }
+
+
+/* Avión de papel */
+#avion {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 999;
+    opacity: 0;
+}
+
+/* Animación del avión de papel */
+.avion-volando-ida {
+    animation: vueloIda 4s ease-in-out forwards;
+}
+
+.avion-volando-vuelta {
+    animation: vueloVuelta 5s ease-in-out forwards;
+}
+
+.avion-estacionado {
+    top: 30px;
+    left: 200px;
+    opacity: 1;
+    transform: scale(0.8) rotate(-15deg);
+}
+
+@keyframes vueloIda {
+    0% {
+        top: 40%;
+        left: -100px;
+        opacity: 1;
+        transform: scale(6) rotate(10deg);
+    }
+    20% {
+        top: 35%;
+        left: 20%;
+        transform: scale(4) rotate(5deg);
+    }
+    40% {
+        top: 45%;
+        left: 40%;
+        transform: scale(3) rotate(0deg);
+    }
+    60% {
+        top: 38%;
+        left: 60%;
+        transform: scale(2) rotate(-5deg);
+    }
+    80% {
+        top: 42%;
+        left: 80%;
+        transform: scale(1.5) rotate(-8deg);
+    }
+    100% {
+        top: 45%;
+        left: 120%;
+        opacity: 1;
+        transform: scale(1) rotate(-10deg);
+    }
+}
+
+@keyframes vueloVuelta {
+    0% {
+        top: 45%;
+        left: 120%;
+        opacity: 0;
+        transform: scale(1) rotate(-10deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        top: 40%;
+        left: 90%;
+        transform: scale(1.2) rotate(15deg);
+    }
+    40% {
+        top: 35%;
+        left: 70%;
+        transform: scale(1.5) rotate(25deg);
+    }
+    50% {
+        top: 30%;
+        left: 50%;
+        transform: scale(1.8) rotate(30deg);
+    }
+    60% {
+        top: 35%;
+        left: 30%;
+        transform: scale(2) rotate(20deg);
+    }
+    80% {
+        top: 25%;
+        left: 15%;
+        transform: scale(1.5) rotate(10deg);
+    }
+    100% {
+        top: 30px;
+        left: 200px;
+        opacity: 1;
+        transform: scale(0.8) rotate(-15deg);
+    }
+}
+
+
+	
