@@ -5,9 +5,9 @@
     white-space: nowrap;
     width: 0;
     animation: 
-        escribir-texto 3s steps(25) 10s forwards,
+        escribir-texto 3s steps(25) 7s forwards,
         cursor-parpadeo 0.7s step-end 10s 4,       /* ⏱️ Parpadea 4 veces durante la escritura */
-        ocultar-cursor 0.1s forwards 13s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
+        ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
 
 @keyframes escribir-texto {
@@ -58,16 +58,17 @@
         opacity: 1;
         transform: scale(6) rotate(10deg);
     }
-    20% {
+    30% {
         top: 35%;
         left: 20%;
         transform: scale(4) rotate(5deg);
     }
+    /*  
     40% {
         top: 45%;
         left: 40%;
         transform: scale(3) rotate(0deg);
-    }
+    }*/
     60% {
         top: 38%;
         left: 60%;
@@ -75,7 +76,7 @@
     }
     80% {
         top: 42%;
-        left: 80%;
+        left: 90%;
         transform: scale(1.5) rotate(-8deg);
     }
     100% {
