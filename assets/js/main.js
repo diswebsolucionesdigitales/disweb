@@ -356,9 +356,16 @@
           console.log('Botón de WhatsApp clickeado');
       });
   });
-// Animación del avión de papel
+// ===== SOLO ANIMACIÓN AVIÓN =====
 function iniciarAnimacionAvion() {
-    console.log('⏰ Segundo 0 - Inicio página');
+    const avion = document.getElementById('avion');
+    
+    if (!avion) {
+        console.log('❌ No se encontró el elemento #avion');
+        return;
+    }
+    
+    console.log('⏰ Iniciando animación avión');
     
     setTimeout(() => {
         console.log('🛫 Segundo 1 - Inicia vuelo ida');
@@ -401,9 +408,8 @@ function iniciarAnimacionAvion() {
     }, 11000);
 }
 
-// Iniciar todo cuando cargue la página
+// Iniciar cuando cargue la página
 window.addEventListener('load', function() {
-    iniciarAnimacionCriatura();
     iniciarAnimacionAvion();
 });
 })();
