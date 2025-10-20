@@ -98,8 +98,8 @@
         transform: scale(1.5) rotate(10deg);
     }
     100% {
-        top: 30px;
-        left: 200px;
+        top: 25px;
+        left: 320px;
         opacity: 1;
         transform: scale(0.8) rotate(-15deg);
     }
