@@ -354,8 +354,9 @@
       whatsappBtn.addEventListener('click', function() {
           // Aquí puedes agregar Google Analytics o otro tracking
           console.log('Botón de WhatsApp clickeado');
-      });
-  
+            });
+      }
+  });
 // ===== SOLO ANIMACIÓN AVIÓN =====
 function iniciarAnimacionAvion() {
     const avion = document.getElementById('avion');
@@ -407,9 +408,10 @@ function iniciarAnimacionAvion() {
         avion.style.transform = 'scale(0.8) rotate(-15deg)';
     }, 11000);
 }
-});
+
 // Iniciar cuando cargue la página
 window.addEventListener('load', function() {
     iniciarAnimacionAvion();
 });
-})();
+
+})(); // <-- ESTA ES LA LLAVE FINAL QUE CIERRA TODO
