@@ -1,3 +1,36 @@
+// Animación del título
+function animarTitulo() {
+    const titulo = document.getElementById('titulo-animado');
+    
+    if (!titulo) {
+        console.log('❌ No se encontró el título');
+        return;
+    }
+    
+    // Ocultar el texto inicialmente
+    titulo.style.opacity = '0';
+    titulo.style.width = '0';
+    titulo.style.overflow = 'hidden';
+    
+    // Esperar hasta el segundo 10
+    setTimeout(() => {
+        console.log('✍️ Segundo 10 - Iniciando escritura título');
+        
+        titulo.classList.add('titulo-escribiendo');
+        
+        // Quitar efecto cursor después de escribir
+        setTimeout(() => {
+            titulo.style.borderRight = 'none';
+        }, 3000);
+        
+    }, 10000); // 10 segundos
+}
+
+// Iniciar cuando cargue la página
+window.addEventListener('load', function() {
+    iniciarAnimacionAvion();
+    animarTitulo();
+});
 // ===== ANIMACIÓN AVIÓN =====
 function iniciarAnimacionAvion() {
     const avion = document.getElementById('avion');
