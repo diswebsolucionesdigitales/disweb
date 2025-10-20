@@ -33,11 +33,11 @@
 
 /* Animación del avión de papel */
 .avion-volando-ida {
-    animation: vueloIda 4s ease-in-out forwards;
+    animation: vueloIda 3s ease-in-out forwards;
 }
 
 .avion-volando-vuelta {
-    animation: vueloVuelta 5s ease-in-out forwards;
+    animation: vueloVuelta 2.5s ease-in-out forwards;
 }
 
 .avion-estacionado {
