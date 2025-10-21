@@ -5,7 +5,7 @@
     white-space: nowrap;
     width: 0;
     animation: 
-        escribir-texto 3s steps(25) 5s forwards,
+        escribir-texto 3s steps(25) 7s forwards,
         cursor-parpadeo 4s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
         ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
