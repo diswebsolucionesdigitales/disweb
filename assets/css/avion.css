@@ -5,8 +5,8 @@
     white-space: nowrap;
     width: 0;
     animation: 
-        escribir-texto 3s steps(25) 7s forwards,
-        cursor-parpadeo 0.7s step-end 10s 4,       /* ⏱️ Parpadea 4 veces durante la escritura */
+        escribir-texto 3s steps(25) 5s forwards,
+        cursor-parpadeo 4s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
         ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
 
@@ -60,7 +60,7 @@
     }
     30% {
         top: 35%;
-        left: 20%;
+        left: 30%;
         transform: scale(4) rotate(5deg);
     }
     /*  
@@ -76,7 +76,7 @@
     }
     80% {
         top: 42%;
-        left: 90%;
+        left: 85%;
         transform: scale(1.5) rotate(-8deg);
     }
     100% {
