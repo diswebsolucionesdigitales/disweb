@@ -6,7 +6,7 @@
     width: 0;
     animation: 
         escribir-texto 3s steps(25) 7s forwards,
-        cursor-parpadeo 4s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
+        cursor-parpadeo 0.7s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
         ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
 
@@ -96,7 +96,7 @@
     }
 }
 
-/* 🔥 KEYFRAMES UNIFICADO - sin media query */
+/* VERSIÓN PC - vuelo vuelta */
 @keyframes vueloVuelta {
     0% {
         top: 45%;
@@ -104,12 +104,12 @@
         opacity: 0;
         transform: scale(1) rotate(-10deg);
     }
-      20% {
-        top: 40%;           /* 📍 FALTABA */
-        left: 80%;          /* 📍 FALTABA */ 
+    20% {
+        top: 40%;
+        left: 80%;
         opacity: 1;
         transform: scale(1.2) rotate(15deg);
-           }
+    }
     35% {
         top: 35%;
         left: 55%;
@@ -121,8 +121,43 @@
         transform: scale(2) rotate(20deg);
     }
     100% {
-        /* 📍 CSS se encarga automáticamente de la posición final */
-        /* gracias a .avion-estacionado con media queries */
+        top: 20px;
+        left: 320px;
         opacity: 1;
+        transform: scale(0.8) rotate(-15deg);
+    }
+}
+
+/* VERSIÓN MÓVIL - vuelo vuelta */
+@media (max-width: 768px) {
+    @keyframes vueloVuelta {
+        0% {
+            top: 45%;
+            left: 120%;
+            opacity: 0;
+            transform: scale(1) rotate(-10deg);
+        }
+        20% {
+            top: 40%;
+            left: 80%;
+            opacity: 1;
+            transform: scale(1.2) rotate(15deg);
+        }
+        35% {
+            top: 35%;
+            left: 55%;
+            transform: scale(1.5) rotate(25deg);
+        }
+        50% {
+            top: 35%;
+            left: 30%;
+            transform: scale(2) rotate(20deg);
+        }
+        100% {
+            top: 15px;
+            left: 40px;
+            opacity: 1;
+            transform: scale(0.6) rotate(-15deg);
+        }
     }
 }
