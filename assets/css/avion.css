@@ -43,12 +43,27 @@
     animation: vueloVuelta 2.5s ease-in-out forwards;
 }
 
+/* === VERSIÓN PC (default) === */
 .avion-estacionado {
-    /* 📍 POSICIÓN FINAL - AJUSTAR AQUÍ */
     top: 20px;
     left: 320px;
     opacity: 1;
     transform: scale(0.8) rotate(-15deg);
+}
+
+/* === VERSIÓN MÓVIL === */
+@media (max-width: 768px) {
+    .avion-estacionado {
+        top: 15px;
+        left: 20px;
+        transform: scale(0.6) rotate(-15deg);
+    }
+    
+    /* También ajustar tamaño en móvil */
+    #avion {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 @keyframes vueloIda {
@@ -63,12 +78,6 @@
         left: 30%;
         transform: scale(4) rotate(5deg);
     }
-    /*  
-    40% {
-        top: 45%;
-        left: 40%;
-        transform: scale(3) rotate(0deg);
-    }*/
     60% {
         top: 38%;
         left: 60%;
@@ -87,6 +96,7 @@
     }
 }
 
+/* 🔥 KEYFRAMES UNIFICADO - sin media query */
 @keyframes vueloVuelta {
     0% {
         top: 45%;
@@ -94,42 +104,22 @@
         opacity: 0;
         transform: scale(1) rotate(-10deg);
     }
-    10% {
+    20% {
         opacity: 1;
     }
-    /* 
-    20% {
-        top: 40%;
-        left: 90%;
-        transform: scale(1.2) rotate(15deg);
-    }
-    */
-    30% {
+    35% {
         top: 35%;
         left: 70%;
         transform: scale(1.5) rotate(25deg);
     }
-    /* 
-    50% {
-        top: 30%;
-        left: 50%;
-        transform: scale(1.8) rotate(30deg);
-    }
-    */
     50% {
         top: 35%;
         left: 30%;
         transform: scale(2) rotate(20deg);
-    } /* 
-    80% {
-        top: 25%;
-        left: 15%;
-        transform: scale(1.5) rotate(10deg);
-    } */
+    }
     100% {
-        top: 20px;
-        left: 320px;
+        /* 📍 CSS se encarga automáticamente de la posición final */
+        /* gracias a .avion-estacionado con media queries */
         opacity: 1;
-        transform: scale(0.8) rotate(-15deg);
     }
 }
