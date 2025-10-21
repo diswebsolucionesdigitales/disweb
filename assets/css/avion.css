@@ -67,16 +67,19 @@
         top: 40%;
         left: -100px;
         transform: scale(6) rotate(10deg);
+         opacity: 0.7;
     }
     30% {
         top: 35%;
         left: 30%;
         transform: scale(4) rotate(5deg);
+        opacity: 0.95;
     }
     60% {
         top: 38%;
         left: 70%;
         transform: scale(2) rotate(-5deg);
+        opacity: 1;
     } /* También ajustar tamaño en móvil 
     80% {
         top: 42%;
@@ -111,8 +114,8 @@
         transform: scale(2) rotate(20deg);
     }
     100% {
-        top: 10px;
-        left: 75px;
+        top: 20px;
+        left: 320px;
         opacity: 1;
         transform: scale(0.8) rotate(-15deg);
     }
@@ -147,14 +150,14 @@
         } */
          100% {
            top: 15px ;
-        left: 70% ;
+        left: 60% ;
              opacity: 1;
         transform: scale(0.6) rotate(-15deg) !important;
         }
         }
     #avion.avion-estacionado {
         top: 15px !important;
-        left: 70% !important;
+        left: 60% !important;
         transform: scale(0.6) rotate(-15deg) !important;
     }
 }
