@@ -6,8 +6,8 @@
     width: 0;
     animation: 
         escribir-texto 2s steps(25) 5.1s forwards,
-        cursor-parpadeo 0.7s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
-        ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
+        cursor-parpadeo 0.7s step-end 7s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
+        ocultar-cursor 0.1s forwards 7.2s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
 }
 
 @keyframes escribir-texto {
