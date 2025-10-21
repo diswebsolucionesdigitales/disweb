@@ -147,14 +147,14 @@
         } */
          100% {
            top: 15px ;
-        left: 75px ;
+        left: 70% ;
              opacity: 1;
         transform: scale(0.6) rotate(-15deg) !important;
         }
         }
     #avion.avion-estacionado {
         top: 15px !important;
-        left: 75px !important;
+        left: 70% !important;
         transform: scale(0.6) rotate(-15deg) !important;
     }
 }
