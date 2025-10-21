@@ -104,9 +104,12 @@
         opacity: 0;
         transform: scale(1) rotate(-10deg);
     }
-    20% {
+      20% {
+        top: 40%;           /* 📍 FALTABA */
+        left: 90%;          /* 📍 FALTABA */ 
         opacity: 1;
-    }
+        transform: scale(1.2) rotate(15deg);
+           }
     35% {
         top: 35%;
         left: 70%;
