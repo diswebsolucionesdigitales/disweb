@@ -55,7 +55,7 @@
 @media (max-width: 768px) {
     .avion-estacionado {
         top: 15px;
-        left: 20px;
+        left: 40px;
         transform: scale(0.6) rotate(-15deg);
     }
     
