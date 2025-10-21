@@ -53,11 +53,7 @@
 
 /* === VERSIÓN MÓVIL === */
 @media (max-width: 768px) {
-    .avion-estacionado {
-        top: 15px;
-        left: 25%;
-        transform: scale(0.6) rotate(-15deg);
-    }
+   
     
     /* También ajustar tamaño en móvil */
     #avion {
@@ -149,11 +145,46 @@
             left: 30%;
             transform: scale(2) rotate(20deg);
         } */
-        100% {
+         100% {
             top: 15px;
-            left: 60%;
+            left: 20px;
             opacity: 1;
             transform: scale(0.6) rotate(-15deg);
         }
+        }
+    #avion.avion-estacionado {
+        top: 15px !important;
+        left: 20px !important;
+        transform: scale(0.6) rotate(-15deg) !important;
+    }
+}
+
+/* Para tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    @keyframes vueloVuelta {
+        0% {
+            top: -10%;
+            left: 80%;
+            opacity: 0;
+            transform: scale(1) rotate(-10deg);
+        }
+        50% {
+            top: 10%;
+            left: 60%;
+            opacity: 1;
+            transform: scale(1.2) rotate(15deg);
+        }
+        100% {
+            top: 20px;
+            left: 50px;
+            opacity: 1;
+            transform: scale(0.7) rotate(-15deg);
+        }
+    }
+    
+    #avion.avion-estacionado {
+        top: 20px !important;
+        left: 50px !important;
+        transform: scale(0.7) rotate(-15deg) !important;
     }
 }
