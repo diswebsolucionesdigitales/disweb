@@ -14,7 +14,7 @@ function animarTitulo() {
     
     // Esperar hasta el segundo 10
     setTimeout(() => {
-        console.log('✍️ Segundo 7,5 - Iniciando escritura título');
+        console.log('✍️ Segundo 7.5 - Iniciando escritura título');
         
         titulo.classList.add('titulo-escribiendo');
         
@@ -52,7 +52,7 @@ function iniciarAnimacionAvion() {
             avion.classList.remove('avion-volando-ida');
             
             setTimeout(() => {
-                console.log('🛬 Segundo 3,5 - Inicia vuelo vuelta');
+                console.log('🛬 Segundo 3.5 - Inicia vuelo vuelta');
                 avion.style.backgroundImage = "url('criatura/fotoavion2.png')";
                 avion.classList.add('avion-volando-vuelta');
                 
