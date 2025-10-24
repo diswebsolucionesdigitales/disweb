@@ -1,0 +1,115 @@
+.titulo-maquina {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid #8ddbff;
+    white-space: nowrap;
+    width: 0;
+    animation: 
+        escribir-texto 2s steps(25) 5.1s forwards,
+        cursor-parpadeo 0.7s step-end 10s 10,       /* ⏱️ Parpadea 4 veces durante la escritura */
+        ocultar-cursor 0.1s forwards 10s;          /* 🆕 Oculta cursor al terminar (10s + 3s) */
+}
+
+@keyframes escribir-texto {
+    to { width: 100%; }
+}
+
+@keyframes cursor-parpadeo {
+    50% { border-color: transparent; }
+}
+
+/* 🆕 NUEVA ANIMACIÓN: Oculta el cursor */
+@keyframes ocultar-cursor {
+    to { border-color: transparent; }  /* 🔄 Hace el cursor transparente permanentemente */
+}
+
+
+/* Estilos del avión */
+#avion {
+     position: fixed;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 999;
+    opacity: 0;
+}
+    
+    
+/* Vuelo de ida */
+#avion.avion-volando-ida {
+    animation: vueloIda 3s ease-in-out forwards;
+}
+
+@keyframes vueloIda {
+    0% {
+        top: 40px;
+        left: -100px;
+        transform: scale(6) rotate(10deg);
+        animation-timing-function: ease-out; /* 🚀 Acelera rápido */
+    }
+    30% {
+        top: 35%;
+        left: 30%;
+        transform: scale(4) rotate(5deg);
+        animation-timing-function: linear; /* ✈️ Velocidad constante */
+    }
+    60% {
+        top: 38%;
+        left: 70%;
+        transform: scale(2) rotate(-5deg);
+        animation-timing-function: ease-in; /* 🪂 Frena suavemente */
+    }
+    100% {
+        top: 45%;
+        left: 110%;
+        opacity: 1;
+        transform: scale(1) rotate(-10deg);
+        animation-timing-function: ease-out; /* 🛬 Termina suave */
+    }
+}
+
+/* Vuelo de vuelta */
+#avion.avion-volando-vuelta {
+    animation: vueloVuelta 2.5s ease-in-out forwards;
+}
+
+@keyframes vueloVuelta {
+    0% {
+        top: -5%;
+        left: 90%;
+        opacity: 0.8;
+        transform: scale(1.2) rotate(-12deg);
+        animation-timing-function: ease-out; /* 🚀 Acelera */
+    }
+    35% {
+        top: 20%;
+        left: 60%;
+        transform: scale(1.6) rotate(20deg);
+        opacity: 1;
+        animation-timing-function: linear; /* ✈️ Velocidad constante */
+    }
+    50% {
+        top: 15%;
+        left: 40%;
+        transform: scale(1.8) rotate(25deg);
+        animation-timing-function: ease-in; /* 🪂 Frena un poco */
+    }
+    100% {
+        top: 20px;
+    left: 320px;
+        opacity: 1;
+        transform: scale(0.6) rotate(-15deg);
+        animation-timing-function: ease-out; /* 🛬 Aterriza suave */
+    }
+}
+
+
+/* Avión estacionado */
+#avion.avion-estacionado {
+    top: 20px;
+    left: 320px;
+    transform: scale(0.8) rotate(-15deg);
+    opacity: 1;
+}
