@@ -861,31 +861,43 @@ section,
 --------------------------------------------------------------*/
 .services .service-item {
   box-shadow: 0px 5px 90px 0px color-mix(in srgb, var(--default-color), transparent 90%);
-  padding: 60px 30px;
+  padding: 15px 15px;
   transition: all ease-in-out 0.3s;
   border-radius: 18px;
   border-bottom: 5px solid var(--background-color);
   height: 100%;
-}
-
-.services .service-item .icon {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  margin: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  transition: ease-in-out 0.3s;
+  flex-direction: column;
+  /* NUEVO: Limitar el ancho máximo de la card */
+  max-width: 100%;
+  overflow: hidden; /* IMPORTANTE: Oculta el desbordamiento */
 }
 
+/* CONTENEDOR DE IMAGEN - TAMAÑO FIJO */
+.services .service-item .service-image {
+  width: 100%;
+  height: 180px; /* ALTO FIJO */
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden; /* CRÍTICO: Recorta el exceso */
+  flex-shrink: 0; /* EVITA que se encoja */
+}
+
+/* IMAGEN - FORZAR AJUSTE */
+.services .service-item .service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* AJUSTA sin distorsionar */
+  object-position: center; /* CENTRA la imagen */
+  display: block; /* ELIMINA espacio fantasma */
+  transition: transform 0.3s ease;
+transform: scale(1.0); 
+}
+
+/* RESTANTE DEL CSS IGUAL... */
 .services .service-item h3 {
   font-weight: 700;
-  margin: 10px 0 15px 0;
+  margin: 0 0 15px 0;
   font-size: 22px;
   transition: ease-in-out 0.3s;
 }
@@ -904,6 +916,10 @@ section,
 
   .services .service-item:hover h3 {
     color: var(--accent-color);
+  }
+
+  .services .service-item:hover .service-image img {
+    transform: scale(1.05);
   }
 }
 
