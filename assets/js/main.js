@@ -104,7 +104,7 @@
  window.addEventListener('load', function() {
   aosInit();
   
-  // ✅ INICIALIZAR PURECOUNTER CUANDO CARGA LA PÁGINA
+  // 
   new PureCounter();
 });
   /**
@@ -143,8 +143,8 @@ if (selectTyped) {
 
   /**
    * Initiate Pure Counter
-   */
-  new PureCounter();
+  
+  new PureCounter(); */
 
   /**
    * Initiate glightbox
