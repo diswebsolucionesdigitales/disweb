@@ -101,8 +101,12 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
-
+ window.addEventListener('load', function() {
+  aosInit();
+  
+  // ✅ INICIALIZAR PURECOUNTER CUANDO CARGA LA PÁGINA
+  new PureCounter();
+});
   /**
    * Init typed.js
    */
@@ -115,8 +119,8 @@
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
-      backDelay: 2000
-      startDelay: 7500
+      backDelay: 2000,
+      startDelay: 7500,
     });
   }
 
