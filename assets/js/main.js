@@ -91,21 +91,17 @@
   document.addEventListener('scroll', toggleScrollTop);
 */
   /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
- window.addEventListener('load', function() {
-  aosInit();
-  
-  // 
-  new PureCounter();
+ * Animation on scroll function and init
+ */
+function aosInit() {
+  AOS.init({
+    duration: 600,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
+  });
+}
+window.addEventListener('load', aosInit);
 });
   /**
    * Init typed.js
@@ -142,9 +138,9 @@ if (selectTyped) {
   });
 
   /**
-   * Initiate Pure Counter
+   * Initiate Pure Counter*/
   
-  new PureCounter(); */
+  new PureCounter(); 
 
   /**
    * Initiate glightbox
